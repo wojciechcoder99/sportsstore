@@ -31,6 +31,29 @@
         </h4>
         <div class="card-text bg-white p-1">{{ product.description }}</div>
       </div>
+      <div class="form-inline float-left mr-1">
+        <select
+          class="form-control"
+          [value]="productsPerPage"
+          (change)="changePageSize($event)"
+        >
+          <option value="3">3 na stronie</option>
+          <option value="4">4 na stronie</option>
+          <option value="6">6 na stronie</option>
+          <option value="8">8 na stronie</option>
+        </select>
+      </div>
+
+      <div class="btn-group float-right">
+        <button
+          *counter="let page of pageCount"
+          class="btn btn-outline-primary"
+          (click)="changePage(page)"
+          [class.active]="page == selectedPage"
+        >
+          {{ page }}
+        </button>
+      </div>
     </div>
   </div>
 </div>
