@@ -1,9 +1,11 @@
-import { Product } from "../model/Product";
+import { Injectable } from "@angular/core";
+import { Product } from "./Product";
 
+@Injectable()
 export class Cart {
-    private lines: CartLine[] = [];
-    private itemCount: number = 0;
-    private cartPrice: number = 0;
+    public lines: CartLine[] = [];
+    public itemCount: number = 0;
+    public cartPrice: number = 0;
 
     addToCart(product: Product): void {
         let line = this.lines.find(line => line.product.id === product.id);
@@ -16,10 +18,12 @@ export class Cart {
         this.recalculate();
     }
 
-    updateCart(product: Product, quantity: number): void {
+    updateCart(product: Product, event: Event): void {
+        const element = event.target as HTMLInputElement;
+        const quantity = element.value;
         let line = this.lines.find(line => line.product.id == product.id);
         if (line != undefined) {
-            line.quantity = quantity;
+            line.quantity = Number(quantity);
         }
         this.recalculate();
     }
