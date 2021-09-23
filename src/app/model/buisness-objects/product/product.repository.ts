@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { StaticDataSource } from "src/app/model/static.datasource";
-import { StringUtils } from "../utils/StringUtils";
-import { Product } from "./Product";
+import { StaticDataSource } from "src/app/model/database/static.datasource";
+import { StringUtils } from "../../../utils/StringUtils";
+import { Product } from "./product.model";
 
 @Injectable()
 export class ProductRepository {

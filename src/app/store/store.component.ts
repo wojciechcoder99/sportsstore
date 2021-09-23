@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { Cart } from "../model/cart.model";
-import { Product } from "../model/Product";
-import { ProductRepository } from "../model/product.repository";
+import { Cart } from "../model/buisness-objects/cart/cart.model";
+import { Product } from "../model/buisness-objects/product/product.model";
+import { ProductRepository } from "../model/buisness-objects/product/product.repository";
 import { StringUtils } from "../utils/StringUtils";
 
 @Component({
