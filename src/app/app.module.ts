@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { StoreModule } from './store/store.module';
 import { registerLocaleData } from '@angular/common';
@@ -10,7 +9,9 @@ import { CheckoutComponent } from './store/components/checkout/checkout.componen
 import { CartSummaryComponent } from './store/components/cart-summary/cartSummary.component';
 import { CartDetailComponent } from './store/components/cart-details/cartDetail.component';
 import { RouterModule } from '@angular/router';
-import { StoreFirstGuard } from './storeFirst.guard';
+import { StoreFirstGuard } from './guards/storeFirst.guard';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 registerLocaleData(localePL);
 
 @NgModule({
@@ -19,10 +20,16 @@ registerLocaleData(localePL);
       { path: "store", component: StoreComponent, canActivate: [StoreFirstGuard] },
       { path: "cart", component: CartDetailComponent, canActivate: [StoreFirstGuard] },
       { path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuard] },
-      { path: "**", redirectTo: "/store" }
+      {
+        path: "admin",
+        loadChildren: () => import("./admin/admin.module")
+          .then(m => m.AdminModule),
+        canActivate: [StoreFirstGuard]
+      },
+      { path: "**", redirectTo: "/store" },
     ]
   )],
-  providers: [StoreFirstGuard],
+  providers: [StoreFirstGuard, AuthGuard],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
 })

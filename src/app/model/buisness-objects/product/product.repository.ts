@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { StaticDataSource } from "src/app/model/database/static.datasource";
+import { StaticDataSource } from "src/app/database/static.datasource";
 import { StringUtils } from "../../../utils/StringUtils";
 import { Product } from "./product.model";
 

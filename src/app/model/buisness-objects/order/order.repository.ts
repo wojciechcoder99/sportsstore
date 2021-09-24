@@ -1,5 +1,5 @@
 import { Order } from "./order.model";
-import { StaticDataSource } from "src/app/model/database/static.datasource";
+import { StaticDataSource } from "src/app/database/static.datasource";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 

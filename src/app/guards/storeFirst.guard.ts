@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from "@angular/router";
-import { StoreComponent } from "./store/store.component";
+import { StoreComponent } from "../store/store.component";
 
 @Injectable()
 export class StoreFirstGuard {
