@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { StoreFirstGuard } from './guards/storeFirst.guard';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 registerLocaleData(localePL);
 
 @NgModule({
@@ -28,7 +30,12 @@ registerLocaleData(localePL);
       },
       { path: "**", redirectTo: "/store" },
     ]
-  )],
+  ), ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: environment.production,
+  // Register the ServiceWorker as soon as the app is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+})],
   providers: [StoreFirstGuard, AuthGuard],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
